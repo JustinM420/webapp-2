@@ -7,7 +7,6 @@ authors = ["Replit user <<>>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 Flask = "^2.2.3"
-pip = "^23.0.1"
 numpy = "^1.24.2"
 openai = "^0.26.5"
 
