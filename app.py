@@ -1,7 +1,5 @@
 from flask import Flask, render_template, jsonify
 import openai
-import os
-import numpy as np
 
 
 app = Flask (__name__)
