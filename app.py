@@ -1,6 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-import openai
-from pinecone import chat
+
 
 app = Flask (__name__)
 
@@ -31,11 +30,7 @@ STRAINS = [
   }
 ]
 
-@app.route("/api/chat")
-def api_chat():
-  user_input = request.args.get('user_input')
-  output = chat.run_search(user_input)
-  return jsonify(output)
+
   
 
 @app.route("/")
@@ -47,22 +42,8 @@ def hello_world():
   def list_strains():
     return jsonify(STRAINS)
 
-    @app.route('/signup', methods=['GET', 'POST'])
-    def signup():
-      
-      return render_template('signup.html')
 
-    @app.route('/login', methods=['GET', 'POST'])
-    def login():
-        if request.method == 'POST':
-            # Handle the login form submission
-            username = request.form['username']
-            password = request.form['password']
-            # Check if the username and password are correct
-            # If they are, log the user in and redirect to the homepage
-            return redirect('/')
-        # Render the login page
-        return render_template('login.html')
+
 
 
 
