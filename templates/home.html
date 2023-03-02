@@ -10,7 +10,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- 
+
+  
+  
 </head>
 <body>
 
@@ -29,28 +31,40 @@
 			</div>
 			
 	<div class="container mt-5">
-		<div class="row justify-content-left">
-			<div class="col-lg-8 offset-md-2">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Ask Mycos Anything" id="ai-input">
-					<div class="input-group-append">
-						<button class="btn btn-warning" type="button" id="submit-btn" style="background-color: #aadbd2; border-color: #aadbd2;">Submit</button>
-					</div>
-				</div>
-			</div>
-		</div>
+    <form id="search_me">
+  		<div class="row justify-content-left">
+  			<div class="col-lg-8 offset-md-2">
+  				<div class="input-group">
+  					<input id="search_box" type="text" class="form-control" placeholder="Ask Mycos Anything" id="ai-input">
+  					<div class="input-group-append">
+  						<button class="btn btn-warning" style="background-color: #aadbd2; border-color: #aadbd2;">Submit</button>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+      document.querySelector('#search_me').addEventListener('submit', (e)=>{
+        e.preventDefault()
+        let search_term = document.querySelector('#search_box').value
+        jQuery.get('https://webapp-2.justinm420.repl.co/api/chat', {
+          user_input: search_term
+        }, (data)=>{
+          document.querySelector("#result").innerHTML = data
+          console.log('got something', data)
+        })
+      })
+    </script>
+
+    
    
     
 <div class ="container mt-5" >
 
-  <h3>Products Near You:</h3>
 </br>
-  <p>
-    {% for strains in strains%}
-      {% include 'strains.html'%}
-    {% endfor %}
-  </p>
-  
 </div>
 	<!-- Features section -->
 	<div class="container mt-5">
